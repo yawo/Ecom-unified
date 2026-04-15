@@ -72,10 +72,10 @@ flowchart LR
 
 ## Buy vs build, SaaS vs custom
 
-- Mapping as-is vers to-be explicite: conserver, encapsuler, remplacer, retirer.
-- Matrice d’arbitrage pondérée: valeur métier, délai, coût 3 ans, lock-in, conformité.
-- Décisions par capacité: panier/retours différenciants, paiement/fiscalité/antifraude industrialisés.
-- Critères de décision: réversibilité, dépendance fournisseur, aptitude internationale.
+- Build: orchestration omnicanale spécifique (panier cross-canal, règles de rupture, parcours de retour).
+- Buy/SaaS: paiement, antifraude, observabilité, searchandising, tax engine, CDP marketing.
+- Hybride: moteur promo/fidélité selon capacité de paramétrage multi-pays et latence requise.
+- Critères: time-to-market, coût de changement, réversibilité, conformité, compétence interne.
 
 ---
 
@@ -87,35 +87,38 @@ flowchart LR
 - 6-12 mois: extension cluster pays, commande/retours/fidélité, réduction batch critiques.
 - 12-24 mois: généralisation internationale, décommissionnements legacy et optimisation TCO.
 - Go/no-go formalisé: seuils KPI explicites, rollback déclenché sur critères partagés.
+## Pattern de transition
+
+- Pattern strangler: encapsuler l’existant via API gateway puis substituer capacité par capacité.
+- Priorité parcours: stock disponible, panier, commande, paiement, retours.
+- Déploiement vagues: pilote pays/enseigne, extension cluster par cluster.
+- Filets de sécurité: feature flags, canary releases, double run ciblé, rollback opérationnel.
 
 ---
 
 # Approche de déploiement
 
-## Cadre opérationnel
+## Cadre d’exécution
 
-- Gouvernance RACI et comitologie: architecture board, steering hebdo, go/no-go par vague.
-- DevSecOps standardisé: CI/CD, tests de contrat API, tests de charge, observabilité unifiée.
-- Pilotage valeur: KPI business (conversion, NPS, rupture évitée) + KPI techniques (SLO, MTTR).
-- Dimension internationale: template pays et variantes locales autorisées sous gouvernance.
-
----
-
-# Arbitrages sponsor à trancher
-
-## Points de décision en comité
-
-- Niveau d’autonomie locale autorisée sur promo/fidélité (faible, moyen, fort).
-- Vitesse de sortie legacy (accélérée vs maîtrisée) et budget associé.
-- Cadre contractuel cible avec fournisseurs SaaS stratégiques.
-- Seuil de risque acceptable pour les go-live pays sur la phase pilote.
+- Trains trimestriels alignés métier/IT, avec gouvernance d’architecture légère mais ferme.
+- SLO de plateforme: latence API < 200 ms sur parcours synchrones critiques.
+- DevSecOps standardisé: CI/CD, tests de contrat API, tests de charge, chaos engineering ciblé.
+- Pilotage valeur: KPI business (conversion, NPS, rupture évitée) + KPI techniques (disponibilité, MTTR).
 
 ---
 
-# Décisions requises aujourd’hui
+# Risques majeurs et parades
 
-1. Valider le modèle opératoire cible et les domaines prioritaires.
-2. Valider la matrice pondérée et les choix buy/build par capacité.
-3. Valider le plan 6/12/24 mois avec critères go/no-go et rollback.
-4. Valider le pilote 2 pays / 2 canaux / 3 capacités critiques en 6 mois.
-5. Mandater la gouvernance de programme et le dispositif de pilotage KPI.
+- Sur-standardisation groupe: préserver des extensions locales encadrées.
+- Dette de migration sous-estimée: financer explicitement les chantiers de sortie legacy.
+- Dérive du modèle de données: instaurer architecture board orienté données.
+- Saturation des équipes pays: modèle produit avec enablement central et runbook standard.
+
+---
+
+# Décision attendue en comité
+
+- Valider le modèle opératoire cible et les domaines prioritaires.
+- Valider les arbitrages buy/build des capacités transverses.
+- Lancer un pilote 2 pays / 2 canaux / 3 capacités critiques en 6 mois.
+- Cadencer la généralisation internationale sur 18-36 mois selon dépendances legacy.

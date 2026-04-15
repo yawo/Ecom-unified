@@ -30,30 +30,6 @@ title: Cadrage et questions structurantes
 
 # Questions structurantes
 
-## Questions bloquantes pour le go/no-go
-
-| Question | Owner | Date cible |
-|---|---|---|
-| Source de vérité stock et sémantique ATP | Architecture + opérations | Semaine 4 |
-| Frontière socle vs OMS logistique | Architecture board | Semaine 4 |
-| Standard groupe vs autonomie pays | Sponsor métier + DSI groupe | Semaine 6 |
-| Modèle de gouvernance des exceptions locales | PMO programme + CTO | Semaine 6 |
-
----
-
-# Questions structurantes
-
-## Questions non bloquantes phase 1
-
-- Niveau de sophistication promo avancée par pays.
-- Cible fine searchandising et personnalisation.
-- Extensions fidélité non critiques pour le pilote.
-- Optimisation FinOps de long terme.
-
----
-
-# Questions structurantes
-
 ## Business et modèle opérationnel
 
 - Quelles promesses client non négociables à 12 mois (J+1, click-and-collect, retour partout)?

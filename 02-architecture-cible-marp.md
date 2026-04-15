@@ -95,55 +95,26 @@ flowchart TB
 
 ---
 
-# Matrice d’arbitrage pondérée
+# Principes de conception
 
-## Critères et poids
-
-| Critère | Poids |
-|---|---:|
-| Valeur métier | 30% |
-| Time-to-market | 25% |
-| Coût 3 ans | 20% |
-| Risque lock-in | 10% |
-| Conformité | 15% |
+- Contrats API versionnés, compatibilité ascendante par défaut.
+- Événements métier canoniques pour diffusion transverse.
+- Idempotence et résilience systématiques sur flux critiques.
+- Séparation stricte commandes synchrones (client-facing) vs asynchrones (back-office).
+- Localisation par configuration: langue, devise, fiscalité, conformité.
 
 ---
 
-# Matrice d’arbitrage pondérée
+# Arbitrages buy vs build
 
-## Score pondéré par option
-
-Barème: 1 (faible) à 5 (fort). Score = somme(note x poids).
-
-| Option | Valeur | TTM | Coût 3 ans | Lock-in | Conformité | Score pondéré |
-|---|---:|---:|---:|---:|---:|---:|
-| Build interne | 5 | 2 | 2 | 5 | 4 | 3.45 |
-| SaaS standard | 3 | 5 | 4 | 2 | 3 | 3.65 |
-| Produit buy on-prem/cloud | 3 | 3 | 3 | 3 | 4 | 3.15 |
-| Custom avec intégrateur | 4 | 3 | 2 | 3 | 4 | 3.30 |
-
----
-
-# Matrice d’arbitrage pondérée
-
-## Sensibilité du modèle
-
-- Si conformité passe à 30%, SaaS et buy fiscalité restent dominants.
-- Si lock-in passe à 25%, build remonte pour capacités différenciantes.
-- Décision finale par capacité, pas globale, avec validation architecture board.
-
----
-
-# Décisions proposées par capacité
-
-| Capacité | Choix | Justification |
+| Capacité | Orientation | Justification |
 |---|---|---|
-| Paiement multi-PSP | SaaS/Buy | Time-to-market + conformité forte |
-| Antifraude web | SaaS | Expertise spécialisée et adaptation continue |
-| Taxe/fiscalité | SaaS | Variabilité réglementaire internationale |
+| Paiement multi-PSP | Buy | Commodité marché, conformité, rapidité d’exécution |
+| Antifraude web | Buy | Expertise spécialisée et modèle évolutif |
+| Moteur taxe/fiscalité | Buy | Variabilité réglementaire internationale |
 | Panier omnicanal | Build | Différenciation parcours cross-canal |
-| Retours cross-canal | Build/Custom | Dépendance aux process enseigne |
-| Searchandising | Buy/Hybride | Vitesse de déploiement + pilotage métier |
+| Orchestration retours | Build/Hybride | Forte dépendance aux process enseigne |
+| Searchandising | Buy/Hybride | Vitesse, pilotage métier, personnalisation |
 
 ---
 
