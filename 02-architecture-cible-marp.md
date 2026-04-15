@@ -67,23 +67,6 @@ flowchart TB
 
 ---
 
-# Mapping as-is vers to-be
-
-## Statut des briques existantes
-
-| Brique existante | Statut cible | Cible associée | Logique |
-|---|---|---|---|
-| API gateway existante | Conserver | Edge | Actif stratégique déjà en place |
-| Business APIs | Conserver/étendre | Core API contracts | Standardiser et versionner |
-| Talend ESB et batch | Encapsuler puis réduire | Event backbone + API | Sortir du point-à-point |
-| POS legacy multiples | Encapsuler puis remplacer partiel | POS cible + BFF | Transition progressive par pays |
-| Plateformes e-commerce multiples | Encapsuler puis rationaliser | BFF + services core | Réduire redondances |
-| OMS order in store | Conserver (interface claire) | Domaine commande | Frontière explicite avec logistique |
-| Référentiels produit/client | Conserver | SI cœur master data | Source de vérité maintenue |
-| Outils ponctuels redondants | Retirer | Capacités core ou SaaS groupe | Réduction TCO/dette |
-
----
-
 # Positionnement des briques
 
 ## Responsabilités proposées
@@ -105,33 +88,16 @@ flowchart TB
 
 ---
 
-# Matrice d’arbitrage
+# Arbitrages buy vs build
 
-## Buy vs build vs SaaS vs custom
-
-Barème: 1 (faible) à 5 (fort).
-
-| Option | Valeur métier | Time-to-market | Coût 3 ans | Risque lock-in | Conformité | Score total |
-|---|---:|---:|---:|---:|---:|---:|
-| Build interne | 5 | 2 | 2 | 5 | 4 | 18 |
-| SaaS standard | 3 | 5 | 4 | 2 | 3 | 17 |
-| Produit buy on-prem/cloud | 3 | 3 | 3 | 3 | 4 | 16 |
-| Custom avec intégrateur | 4 | 3 | 2 | 3 | 4 | 16 |
-
----
-
-# Matrice d’arbitrage
-
-## Décisions proposées par capacité
-
-| Capacité | Choix | Rationale synthétique |
+| Capacité | Orientation | Justification |
 |---|---|---|
-| Paiement multi-PSP | SaaS/Buy | Time-to-market + conformité forte |
-| Antifraude web | SaaS | Expertise spécialisée et adaptation continue |
-| Taxe/fiscalité | SaaS | Variabilité réglementaire internationale |
+| Paiement multi-PSP | Buy | Commodité marché, conformité, rapidité d’exécution |
+| Antifraude web | Buy | Expertise spécialisée et modèle évolutif |
+| Moteur taxe/fiscalité | Buy | Variabilité réglementaire internationale |
 | Panier omnicanal | Build | Différenciation parcours cross-canal |
-| Retours cross-canal | Build/Custom | Dépendance aux process enseigne |
-| Searchandising | Buy/Hybride | Vitesse de déploiement + pilotage métier |
+| Orchestration retours | Build/Hybride | Forte dépendance aux process enseigne |
+| Searchandising | Buy/Hybride | Vitesse, pilotage métier, personnalisation |
 
 ---
 

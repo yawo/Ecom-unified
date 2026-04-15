@@ -16,6 +16,17 @@ title: Migration et déploiement
 
 ---
 
+# Plan de migration
+
+## Vagues proposées
+
+1. Fondation: contrats API, événements canoniques, observabilité, sécurité.
+2. Parcours vente: stock disponible, panier, checkout/paiement.
+3. Post-achat: commande, retours cross-canal, service client.
+4. Extension: fidélité avancée, promotions complexes, optimisation pays.
+
+---
+
 # Coexistence legacy
 
 ## Schéma de transition
@@ -33,82 +44,47 @@ flowchart LR
 
 ---
 
-# Plan exécutable
+# Déploiement
 
-## Horizon 0 à 6 mois
+## Modèle industriel
 
-- Jalons: contrats API, événements canoniques, observabilité minimale, sécurité baseline.
-- Périmètre: pilote 2 pays, 2 canaux, stock + panier + checkout.
-- Critères de réussite: latence p95 cible tenue, stabilité en pic, zéro incident critique bloquant.
-- Rollback: bascule contrôlée vers parcours legacy via feature flags et routage gateway.
-
----
-
-# Plan exécutable
-
-## Horizon 6 à 12 mois
-
-- Jalons: commande/retours cross-canal, fidélité temps réel, industrialisation CI/CD multi-domaines.
-- Périmètre: extension par cluster pays et rationalisation e-commerce redondant.
-- Critères de réussite: baisse incidents majeurs, amélioration conversion, réduction flux batch critiques.
-- Rollback: retour partiel par capacité (commande, retours, fidélité) sans rollback global.
+- CI/CD standard par domaine avec quality gates.
+- Tests automatiques: unitaires, contrats API, non-régression parcours.
+- Tests de charge sur pics commerciaux avant chaque vague.
+- Déploiement progressif: canary, blue/green selon criticité.
 
 ---
 
-# Plan exécutable
+# Exploitation et fiabilité
 
-## Horizon 12 à 24 mois
+## Run cible
 
-- Jalons: décommissionnements legacy prioritaires, standard groupe stabilisé, optimisation coût-performance.
-- Périmètre: généralisation internationale avec variantes locales encadrées.
-- Critères de réussite: réduction TCO, baisse dette technique, adoption cible par pays.
-- Rollback: plan de continuité limité aux fonctions critiques et fenêtre de retour définie.
-
----
-
-# Gouvernance opérationnelle
-
-## RACI de référence
-
-| Décision | A | R | C | I |
-|---|---|---|---|---|
-| Standard API/événement | CTO groupe | Lead architecte domaine | Pays IT lead, sécurité | PMO programme |
-| Priorisation capacité | Sponsor métier groupe | Product manager domaine | Direction pays | Équipes run |
-| Go/no-go vague pays | Directeur programme | Release manager | Ops pays, sécurité, finance | COMEX projet |
-| Décommissionnement legacy | CTO groupe | Responsable plateforme | Pays IT lead | PMO |
+- SRE transverse + équipes domaine responsables de bout en bout.
+- Runbooks incidents standardisés et exercices de reprise planifiés.
+- Mesure continue des SLO et error budgets par capacité.
+- Gestion proactive de la qualité de données (fraîcheur, complétude, cohérence).
 
 ---
 
-# Gouvernance opérationnelle
+# Gestion internationale
 
-## Comitologie, cadence et KPI décisionnels
+## Cadre de déploiement multi-pays
 
-- Comitologie: architecture board (mensuel), steering programme (hebdo), go/no-go release (par vague).
-- Cadence: incréments trimestriels avec revues de valeur mensuelles.
-- KPI décisionnels: disponibilité, latence p95, MTTR, taux d’incident critique, décommissionnement effectif.
-
----
-
-# Dimension internationale
-
-## Template pays
-
-- Bloc global obligatoire: API contracts, sécurité, observabilité, modèle de données canonique.
-- Bloc local paramétrable: fiscalité, moyens de paiement, langue, devise, mentions légales.
-- Bloc local spécifique sous dérogation: cas réglementaires non couverts par paramétrage.
+- Core global commun, variantes locales par configuration.
+- Templates de déploiement pays (taxes, paiements, langue, devise).
+- Process de certification locale avant go-live.
+- Ordonnancement des pays par complexité réglementaire et dépendances legacy.
 
 ---
 
-# Dimension internationale
+# KPI de pilotage
 
-## Variantes autorisées et non autorisées
-
-| Domaine | Autorisé localement | Non autorisé localement |
-|---|---|---|
-| Fiscalité | Règles taxe et éco-participation | Changer le modèle de données canonique |
-| Paiement | Moyens de paiement et PSP homologués | Contourner les contrôles antifraude groupe |
-| Expérience | Langue, contenus, parcours éditoriaux | Modifier contrats API core |
-| Fidélité/promo | Paramétrage des règles pays | Dupliquer le moteur central hors gouvernance |
+| Axe | KPI |
+|---|---|
+| Business | conversion, panier moyen, taux de rupture visible |
+| Opérations | délai de déploiement, incident majeur, MTTR |
+| Technique | latence p95, disponibilité, taux d’erreur API |
+| Transformation | taux de décommissionnement legacy, adoption pays |
 
 ---
 
@@ -117,4 +93,4 @@ flowchart LR
 - Valider le pilote initial: périmètre, pays, canaux, critères de succès.
 - Sécuriser le budget de transformation et de sortie legacy.
 - Installer la gouvernance produit/architecture et les rituels d’arbitrage.
-- Engager l’exécution sur 3 horizons: 6 mois, 12 mois, 24 mois.
+- Engager l’exécution sur 3 horizons: 6 mois, 12 mois, 24+ mois.
