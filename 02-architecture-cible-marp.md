@@ -67,6 +67,23 @@ flowchart TB
 
 ---
 
+# Mapping as-is vers to-be
+
+## Statut des briques existantes
+
+| Brique existante | Statut cible | Cible associée | Logique |
+|---|---|---|---|
+| API gateway existante | Conserver | Edge | Actif stratégique déjà en place |
+| Business APIs | Conserver/étendre | Core API contracts | Standardiser et versionner |
+| Talend ESB et batch | Encapsuler puis réduire | Event backbone + API | Sortir du point-à-point |
+| POS legacy multiples | Encapsuler puis remplacer partiel | POS cible + BFF | Transition progressive par pays |
+| Plateformes e-commerce multiples | Encapsuler puis rationaliser | BFF + services core | Réduire redondances |
+| OMS order in store | Conserver (interface claire) | Domaine commande | Frontière explicite avec logistique |
+| Référentiels produit/client | Conserver | SI cœur master data | Source de vérité maintenue |
+| Outils ponctuels redondants | Retirer | Capacités core ou SaaS groupe | Réduction TCO/dette |
+
+---
+
 # Positionnement des briques
 
 ## Responsabilités proposées

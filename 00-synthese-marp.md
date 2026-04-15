@@ -81,6 +81,12 @@ flowchart LR
 
 # Stratégie de migration
 
+## Plan exécutable en 3 horizons
+
+- 0-6 mois: fondation + pilote 2 pays/2 canaux avec rollback via gateway et feature flags.
+- 6-12 mois: extension cluster pays, commande/retours/fidélité, réduction batch critiques.
+- 12-24 mois: généralisation internationale, décommissionnements legacy et optimisation TCO.
+- Go/no-go formalisé: seuils KPI explicites, rollback déclenché sur critères partagés.
 ## Pattern de transition
 
 - Pattern strangler: encapsuler l’existant via API gateway puis substituer capacité par capacité.
