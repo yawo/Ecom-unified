@@ -147,6 +147,34 @@ flowchart LR
 | Paiement | Moyens de paiement et PSP homologués | Contourner les contrôles antifraude groupe |
 | Expérience | Langue, contenus, parcours éditoriaux | Modifier contrats API core |
 | Fidélité/promo | Paramétrage des règles pays | Dupliquer le moteur central hors gouvernance |
+
+---
+
+# Gouvernance des dérogations locales
+
+## Process RFC obligatoire
+
+- RFC pays avec justification business/réglementaire, périmètre, durée et plan de sortie.
+- Revue architecture + sécurité + juridique avant validation.
+- Dérogation datée avec expiration explicite et KPI de convergence.
+- Revue trimestrielle des dérogations ouvertes et fermetures planifiées.
+
+---
+
+# Plan de retrait legacy
+
+## Retirement plan par brique
+
+| Brique legacy | Prérequis de retrait | Jalon cible | Coût de coexistence | Date de fin cible |
+|---|---|---|---|---|
+| POS historique vague 1 | BFF en production + mode offline validé | Horizon 6-12 mois | Élevé (support local) | Fin horizon 12 |
+| E-commerce redondant A | Panier/checkout core stabilisés | Horizon 6-12 mois | Élevé (double run) | Fin horizon 12 |
+| Batch stock legacy | Event backbone + data quality monitoring | Horizon 0-6 mois | Moyen | Fin horizon 6 |
+| Outil retours local | Service retours core + formation pays | Horizon 12-24 mois | Moyen | Fin horizon 24 |
+| Connecteurs point-à-point | Contrats API canoniques déployés | Horizon 12-24 mois | Faible à moyen | Fin horizon 24 |
+
+---
+
 # Déploiement
 
 ## Modèle industriel
