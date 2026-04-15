@@ -79,3 +79,19 @@ title: Cadrage et questions structurantes
 - Les capacités différenciantes sont traitées en priorité dans le socle.
 - Les services transverses non différenciants privilégient des solutions du marché.
 - La migration doit préserver la continuité des ventes et la conformité locale.
+
+---
+
+# Traçabilité des exigences du brief
+
+## Couverture par deck
+
+| Exigence du brief | Deck principal | Couverture |
+|---|---|---|
+| Vision cible | 00-synthese-marp.md | Vision, principes, macro-architecture |
+| Questions structurantes | 01-cadrage-questions-marp.md | Questions business, data, organisation |
+| Principes structurants | 00-synthese-marp.md / 02-architecture-cible-marp.md | API-first, event-driven, ownership |
+| Positionnement des briques | 02-architecture-cible-marp.md | Mapping as-is vers to-be, responsabilités |
+| Buy vs build / SaaS vs custom | 00-synthese-marp.md / 02-architecture-cible-marp.md | Arbitrages par capacité |
+| Stratégie de migration | 03-migration-deploiement-marp.md | Vagues, coexistence, rollback |
+| Approche de déploiement | 03-migration-deploiement-marp.md | Modèle industriel, run, KPI |

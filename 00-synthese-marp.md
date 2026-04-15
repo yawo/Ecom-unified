@@ -122,3 +122,17 @@ flowchart LR
 - Valider les arbitrages buy/build des capacités transverses.
 - Lancer un pilote 2 pays / 2 canaux / 3 capacités critiques en 6 mois.
 - Cadencer la généralisation internationale sur 18-36 mois selon dépendances legacy.
+
+---
+
+# Décisions irréversibles à valider maintenant
+
+## Options et impacts
+
+| Décision | Option A | Option B | Impact principal |
+|---|---|---|---|
+| Modèle opératoire | Plateforme groupe centralisée | Fédération de domaines pays | Vitesse de standardisation vs autonomie locale |
+| Moteur promo/fidélité | Moteur groupe unique | Variantes par marque/pays | Cohérence client vs adaptation locale |
+| Panier omnicanal | Build groupe | Solution marché paramétrée | Différenciation vs time-to-market |
+| Trajectoire POS | Convergence progressive | Coexistence long terme | Simplification SI vs coût de transition |
+| Retrait legacy | Date butoir par brique | Retrait opportuniste | Discipline de transformation vs flexibilité court terme |

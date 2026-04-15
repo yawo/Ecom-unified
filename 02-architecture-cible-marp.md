@@ -95,6 +95,21 @@ flowchart TB
 
 ---
 
+# Ownership par capacité
+
+## Matrice de responsabilités
+
+| Capacité | Owner produit | Owner technique | Système maître | SLA cible |
+|---|---|---|---|---|
+| Catalogue de vente | Domain lead offre | Lead engineering catalogue | Référentiel produit central | Fraîcheur < 5 min |
+| Pricing/promo | Domain lead pricing | Lead engineering pricing | Moteur pricing/promo groupe | Latence p95 < 200 ms |
+| Stock marchand | Domain lead stock | Lead engineering stock | ERP stock + service stock | Écart stock < 2% |
+| Panier omnicanal | Domain lead checkout | Lead engineering panier | Service panier core | Disponibilité >= 99.9% |
+| Commande/retours | Domain lead order | Lead engineering order | Service commande core + OMS | RTO < 30 min |
+| Fidélité | Domain lead fidélité | Lead engineering fidélité | Moteur fidélité groupe | Earn/burn < 2 s |
+
+---
+
 # Principes de conception
 
 - Contrats API versionnés, compatibilité ascendante par défaut.
@@ -120,11 +135,15 @@ flowchart TB
 
 # Exigences non fonctionnelles
 
-- Performance: API synchrones critiques < 200 ms (p95 cible).
-- Disponibilité: architecture active-active logique, dégradation maîtrisée.
-- Sécurité: chiffrement transit/repos, zero trust, journalisation d’audit.
-- Exploitabilité: observabilité unifiée, SLI/SLO par parcours.
-- Continuité: RTO/RPO alignés sur criticité métier par domaine.
+## Contrats NFR par domaine
+
+| Domaine | Performance | Disponibilité | Résilience | Sécurité/data |
+|---|---|---|---|---|
+| Stock & disponibilité | p95 < 200 ms | >= 99.9% | RTO 30 min, RPO 5 min | Traçabilité des ajustements |
+| Panier & checkout | p95 < 200 ms | >= 99.95% | Dégradation sans perte panier | Chiffrement, tokenisation paiement |
+| Commande & retours | p95 < 300 ms | >= 99.9% | Rejeu idempotent, DLQ | Audit complet actions sensibles |
+| Fidélité & promo | p95 < 250 ms | >= 99.9% | Retry borné, compensation | Gestion consentement et opt-in |
+| API edge | p95 < 150 ms | >= 99.95% | Circuit breaker et canary | IAM fédéré, WAF, rate limiting |
 
 ---
 
